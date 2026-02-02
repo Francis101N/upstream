@@ -120,7 +120,7 @@
 
     <!-- WHATSAPP CHAT BUTTON -->
     <div class="fixed bottom-6 left-6 z-50">
-        <a href="https://api.whatsapp.com/send?phone=1234567890&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
+        <a href="https://api.whatsapp.com/send?phone=02014537053&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
             target="_blank"
             class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
 
@@ -145,7 +145,7 @@
 
     <!-- SERVICES BANNER -->
     <div class="relative bg-cover bg-center py-32 overflow-hidden"
-        style="background-image: url('assets/images/img8.jpg');">
+        style="background-image: url('assets/images/IMG_9750.JPG.jpeg');">
 
         <!-- Dark overlay with subtle motion -->
         <div class="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
@@ -187,7 +187,7 @@
                     Our Culture
                 </h1>
                 <p class="mt-4 text-lg text-gray-600">
-                    Learn about what makes our company unique and the values that guide everything we do.
+                    Discover the principles and values that define our organization and guide our operations.
                 </p>
             </div>
 
@@ -282,69 +282,6 @@
                             </p>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-gray-50 border-t border-gray-200 py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-
-                <!-- Image -->
-                <div id="director-image"
-                    class="md:w-5/12 transform -translate-x-24 opacity-0 transition-all duration-1000 ease-out">
-                    <div class="relative">
-                        <img src="assets/images/daniel.jpg" alt="Daniel Ubeh"
-                            class="w-full h-auto rounded-xl shadow-2xl object-cover" />
-                        <div
-                            class="absolute bottom-3 left-3 bg-upsteamRed text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
-                            Project Director
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text -->
-                <div class="md:w-7/12 space-y-5">
-                    <h3 class="text-3xl font-bold text-gray-900">
-                        Daniel Ubeh
-                    </h3>
-
-                    <p class="text-upsteamRed font-semibold tracking-wide uppercase text-sm">
-                        Project Director
-                    </p>
-
-                    <p class="text-gray-700 leading-relaxed">
-                        A visionary leader and trusted industry expert,
-                        <strong>Daniel Ubeh</strong> plays a pivotal role in steering
-                        <strong>Upstream Development Company</strong> toward sustained success,
-                        reinforcing its reputation as a powerhouse in oil and gas exploration
-                        and production.
-                    </p>
-
-                    <p class="text-gray-700 leading-relaxed">
-                        As an accomplished and results-driven Project Director, Daniel leads
-                        with strategic insight and unwavering commitment to operational
-                        excellence.
-                    </p>
-
-                    <p class="text-gray-700 leading-relaxed">
-                        With extensive experience across the EPIC lifecycle — from exploration
-                        and drilling to production optimization and field management — he
-                        consistently delivers world-class outcomes.
-                    </p>
-
-                    <p class="text-gray-700 leading-relaxed">
-                        Under his leadership, <strong>Upstream Development Company</strong> has
-                        set new benchmarks for efficiency, safety, and client satisfaction.
-                    </p>
-
-                    <!-- Quote -->
-                    <blockquote class="mt-6 border-l-4 border-upsteamRed pl-5 italic text-gray-600">
-                        “Excellence isn’t optional — it’s the standard. We don’t just deliver
-                        projects; we shape the future of energy.”
-                    </blockquote>
                 </div>
 
             </div>
@@ -530,7 +467,7 @@
                 <div
                     class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:-translate-y-2 group opacity-0 animate-fadeInUp delay-100">
                     <div class="overflow-hidden h-64">
-                        <img src="https://dev.upstreaminnigeria.com/upload/reason_images/202501241244blog-3.jpg"
+                        <img src="assets/images/DSC_2251.jpg"
                             alt="End-to-End Expertise in Oil & Gas Operations."
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
@@ -549,7 +486,7 @@
                 <div
                     class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:-translate-y-2 group opacity-0 animate-fadeInUp delay-200">
                     <div class="overflow-hidden h-64">
-                        <img src="https://dev.upstreaminnigeria.com/upload/reason_images/202501241314blog-4.jpg"
+                        <img src="assets/images/img4.jpg"
                             alt="Innovation-Driven Production Optimization"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
@@ -568,7 +505,7 @@
                 <div
                     class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform transition-all duration-500 hover:-translate-y-2 group opacity-0 animate-fadeInUp delay-300">
                     <div class="overflow-hidden h-64">
-                        <img src="https://dev.upstreaminnigeria.com/upload/reason_images/202501241314blog-2.jpg"
+                        <img src="assets/images/img3.jpg"
                             alt="Unwavering Commitment to Safety & Sustainability"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     </div>
@@ -588,15 +525,32 @@
     </section>
 
     <?php
-    include("inc/info.php");
-    ?>
-
-    <?php
     include("inc/footer.php");
     ?>
 
 </body>
 <script>
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
         const image = document.getElementById("director-image");
 

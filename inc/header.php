@@ -4,10 +4,11 @@
         <div class="flex items-center justify-between h-20">
 
             <!-- Logo -->
-            <img src="assets/images/Upstream-logo-copy-removebg-preview.png" alt="Upsteam Energy Logo"
-                class="h-20 md:h-18 w-auto">
+            <a href="home">
+                <img src="assets/images/upstreamlogoanimation-Trim-ezgif.com-optimize.gif" alt="Upstream Energy Logo"
+                    class="h-20 md:h-18 w-auto">
+            </a>
 
-            <!-- Desktop Navigation -->
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium relative">
                 <a href="home" class="text-gray-700 relative group">
@@ -17,9 +18,9 @@
                         class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
                 </a>
 
-                <div class="relative group">
-                    <button
-                        class="flex items-center text-gray-700 relative group-hover:text-upsteamRed transition focus:outline-none">
+                <div class="relative">
+                    <button id="aboutBtn"
+                        class="flex items-center text-gray-700 relative transition focus:outline-none">
                         ABOUT US
                         <svg class="w-4 h-4 ml-1 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -28,25 +29,53 @@
                         </svg>
                         <!-- Animated dash -->
                         <span
-                            class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
+                            class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300"></span>
                     </button>
+
                     <!-- Dropdown Menu -->
-                    <div
-                        class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-300 z-50">
+                    <div id="aboutDropdown"
+                        class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 z-50">
                         <a href="culture"
                             class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">OUR
                             CULTURE</a>
                         <a href="history"
                             class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">OUR
                             HISTORY</a>
-                        <a href="leadership"
+                        <a href="leaders"
                             class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">OUR
                             LEADERSHIP</a>
                     </div>
                 </div>
 
+                <script>
+                    const aboutBtn = document.getElementById('aboutBtn');
+                    const aboutDropdown = document.getElementById('aboutDropdown');
+
+                    aboutBtn.addEventListener('click', () => {
+                        // Toggle visibility
+                        aboutDropdown.classList.toggle('opacity-100');
+                        aboutDropdown.classList.toggle('visible');
+                        aboutDropdown.classList.toggle('opacity-0');
+                        aboutDropdown.classList.toggle('invisible');
+                    });
+
+                    // Optional: close dropdown when clicking outside
+                    window.addEventListener('click', (e) => {
+                        if (!aboutBtn.contains(e.target) && !aboutDropdown.contains(e.target)) {
+                            aboutDropdown.classList.add('opacity-0', 'invisible');
+                            aboutDropdown.classList.remove('opacity-100', 'visible');
+                        }
+                    });
+                </script>
+
+
                 <a href="services" class="text-gray-700 relative group">
-                    SERVICES
+                    FOCUS AREAS
+                    <span
+                        class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="projects" class="text-gray-700 relative group">
+                    PROJECTS
                     <span
                         class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -57,11 +86,6 @@
                         class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
                 </a>
 
-                <a href="contact" class="text-gray-700 relative group">
-                    CONTACT US
-                    <span
-                        class="absolute left-0 -bottom-1 h-0.5 w-0 bg-upsteamRed transition-all duration-300 group-hover:w-full"></span>
-                </a>
             </nav>
 
 
@@ -101,19 +125,20 @@
                 <div
                     class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-300 z-50">
                     <a href="culture"
-                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">Tech
+                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">
                         OUR CULTURE</a>
                     <a href="history"
-                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">Tech
+                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">
                         OUR HISTORY</a>
-                    <a href="leadership"
-                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">Tech
+                    <a href="leaders"
+                        class="block px-4 py-2 text-gray-700 hover:bg-upsteamRed hover:text-white transition">
                         OUR LEADERSHIP</a>
                 </div>
             </div>
-            <a href="services" class="block text-gray-700 hover:text-upsteamRed">SERVICES</a>
+            <a href="services" class="block text-gray-700 hover:text-upsteamRed">FOCUS AREAS</a>
+            <a href="projects" class="block text-gray-700 hover:text-upsteamRed">PROJECTS</a>
             <a href="news" class="block text-gray-700 hover:text-upsteamRed">NEWS</a>
-            <a href="contact" class="block text-gray-700 hover:text-upsteamRed">CONTACT US</a>
+            <!-- <a href="contact" class="block text-gray-700 hover:text-upsteamRed">CONTACT US</a> -->
 
             <a href="contact" class="block text-center mt-4 px-4 py-2 bg-upsteamRed text-white rounded">
                 GET IN TOUCH

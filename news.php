@@ -165,7 +165,7 @@
 
     <!-- WHATSAPP CHAT BUTTON -->
     <div class="fixed bottom-6 left-6 z-50">
-        <a href="https://api.whatsapp.com/send?phone=1234567890&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
+        <a href="https://api.whatsapp.com/send?phone=02014537053&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
             target="_blank"
             class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
 
@@ -190,7 +190,7 @@
 
     <!-- SERVICES BANNER -->
     <div class="section banner-page about relative bg-cover bg-center py-32"
-        style="background-image: url('assets/images/img8.jpg');">
+        style="background-image: url('assets/images/IMG_9750.JPG.jpeg');">
         <!-- Overlay for better text visibility -->
         <div class="absolute inset-0 bg-black/50"></div>
 
@@ -221,99 +221,96 @@
 
     </div>
 
-    <section class="section py-20 bg-slate-50">
+    <!-- BLOG -->
+    <section class="section blog py-20 bg-gray-50">
         <div class="container mx-auto px-6">
 
-            <!-- Featured Article -->
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center animate-fadeInUp">Featured
-                    Article</h2>
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-
-                    <div class="overflow-hidden rounded-3xl shadow-lg animate-fadeInLeft">
-                        <img src="https://dev.upstreaminnigeria.com/upload/news_images/1743087469_E7WXmGJifr.jpg"
-                            alt="Non-Destructive Testing Inspection Report"
-                            class="w-full h-[350px] object-cover transition-transform duration-500 hover:scale-105">
-                    </div>
-
-                    <div class="space-y-4 animate-fadeInRight">
-                        <h3 class="text-2xl md:text-3xl font-bold">Non-Destructive Testing Inspection Report</h3>
-                        <p class="text-gray-500">Mar 27, 2025</p>
-                        <p class="text-gray-700">Ensuring the integrity of welded components is crucial for safety and
-                            performance. A Non-Destructive Testing (NDT) inspection was conducted to assess weld
-                            integrity, wall thickness, and detect any flaws across various pipe and flange connections.
-                        </p>
-                        <a href="https://dev.upstreaminnigeria.com/news/non-destructive-testing-inspection-report"
-                            class="inline-block px-6 py-2 bg-upsteamRed text-white font-semibold rounded-lg shadow hover:bg-red-700 transition transform hover:-translate-y-1">
-                            Read More
-                        </a>
-                    </div>
-
-                </div>
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl font-bold text-gray-800 mb-2">Recent News</h2>
+                <p class="text-gray-600 text-lg">
+                    Stay updated with the top latest insights and company news
+                </p>
             </div>
 
-            <!-- Latest Articles -->
-            <br><br>
-            <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center animate-fadeInUp">Latest News
-                </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                <div class="grid md:grid-cols-3 gap-8">
+                <?php
+                include('connection/connect.php');
 
+                $query = "SELECT * FROM news ORDER BY date_created DESC LIMIT 3";
+                $result = mysqli_query($db, $query);
+
+                while ($row = mysqli_fetch_assoc($result)):
+                    ?>
                     <!-- Article Card -->
-                    <div
-                        class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl animate-fadeInUp">
-                        <img src="https://dev.upstreaminnigeria.com/upload/news_images/1743087469_E7WXmGJifr.jpg"
-                            alt="Non-Destructive Testing Inspection Report" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <h4 class="font-bold text-lg mb-1">Non-Destructive Testing Inspection Report</h4>
-                            <p class="text-gray-500 text-sm mb-2">Mar 27, 2025</p>
-                            <p class="text-gray-700 text-sm mb-3">Ensuring the integrity of welded components is crucial
-                                for safety and performance. A Non-Destructive Testing (NDT) inspe...</p>
-                            <a href="https://dev.upstreaminnigeria.com/news/non-destructive-testing-inspection-report"
-                                class="text-upsteamRed font-semibold hover:underline">Read More →</a>
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden
+                            transform transition duration-500
+                            hover:-translate-y-2 hover:shadow-2xl
+                            animate-fadeInUp flex flex-col">
+
+                        <!-- Image -->
+                        <img src="./admin/uploads/<?= htmlspecialchars($row['blog_img']) ?>"
+                            alt="<?= htmlspecialchars($row['blog_title']) ?>" class="w-full h-48 object-cover">
+
+                        <!-- Content -->
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h4 class="font-bold text-lg mb-1">
+                                <?= htmlspecialchars($row['blog_title']) ?>
+                            </h4>
+
+                            <p class="text-gray-500 text-sm mb-3">
+                                <?= date("M d, Y", strtotime($row['date_created'])) ?>
+                            </p>
+
+                            <p class="text-gray-700 text-sm mb-4">
+                                <?= nl2br(htmlspecialchars(substr($row['blog_story'], 0, 100))) ?>...
+                            </p>
+
+                            <!-- Read More -->
+                            <a href="news_details.php?id=<?= $row['id'] ?>"
+                                class="mt-auto inline-block text-upsteamRed font-semibold hover:underline">
+                                Read More →
+                            </a>
                         </div>
                     </div>
+                <?php endwhile; ?>
 
-                    <!-- Article Card -->
-                    <div
-                        class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl animate-fadeInUp delay-100">
-                        <img src="https://dev.upstreaminnigeria.com/upload/news_images/1744294634_bzLaZ7UNqZ.jpg"
-                            alt="Honoring a Decade of Leadership and Community Growth" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <h4 class="font-bold text-lg mb-1">Honoring a Decade of Leadership and Community Growth</h4>
-                            <p class="text-gray-500 text-sm mb-2">Mar 27, 2025</p>
-                            <p class="text-gray-700 text-sm mb-3">Leadership rooted in service and dedication
-                                strengthens communities. Upstream Development Company joined in a momentous...</p>
-                            <a href="https://dev.upstreaminnigeria.com/news/honoring-a-decade-of-leadership-and-community-growth"
-                                class="text-upsteamRed font-semibold hover:underline">Read More →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card -->
-                    <div
-                        class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl animate-fadeInUp delay-200">
-                        <img src="https://dev.upstreaminnigeria.com/upload/news_images/1743085477_EADtfmUpXg.jpg"
-                            alt="A Celebration of Togetherness and Joy" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <h4 class="font-bold text-lg mb-1">A Celebration of Togetherness and Joy</h4>
-                            <p class="text-gray-500 text-sm mb-2">Mar 27, 2025</p>
-                            <p class="text-gray-700 text-sm mb-3">Coming together as a community to share moments of joy
-                                and connection is a powerful experience. Upstream Development Com...</p>
-                            <a href="https://dev.upstreaminnigeria.com/news/a-celebration-of-togetherness-and-joy"
-                                class="text-upsteamRed font-semibold hover:underline">Read More →</a>
-                        </div>
-                    </div>
-
-                    <!-- Add more cards the same way, with incremental `delay-` for staggered animations -->
-
-                </div>
             </div>
+
         </div>
     </section>
 
+    <?php
+    include("inc/info.php");
+    ?>
+
+    <?php
+    include("inc/footer.php");
+    ?>
+
 </body>
 <script>
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {

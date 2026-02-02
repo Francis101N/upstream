@@ -1,12 +1,12 @@
 <!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-300 pt-16">
+<footer class="bg-black text-gray-300 pt-16">
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 
             <!-- BRAND INFO -->
             <div>
-                <img src="assets/images/logo-footer-removebg-preview.png" alt="Upstream Energy Logo"
-                    class="h-20 md:h-18 w-auto mb-4"><br>
+                <img src="assets/images/upstreamlogoanimation.withoutbag-Trim-ezgif.com-optimize.gif"
+                    alt="Upsteam Energy Logo" class="h-20 md:h-20 w-auto"><br>
                 <p class="text-gray-400 mb-4">
                     Leaders in Marginal Field Development and Operations in Nigeria.
                 </p>

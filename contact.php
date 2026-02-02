@@ -137,14 +137,39 @@
 
     <?php include("inc/header.php"); ?>
 
+    <!-- WHATSAPP CHAT BUTTON -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <a href="https://api.whatsapp.com/send?phone=02014537053&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
+            target="_blank"
+            class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
+
+            <!-- WhatsApp SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 2.12.55 4.1 1.515 5.838L0 24l6.24-1.56A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.33 17.658c-.232.65-1.35 1.22-1.88 1.29-.51.07-1.16.1-2.09-.22-1.43-.46-2.35-.74-3.47-2.23-1.11-1.49-.93-1.44-1.72-2.47-.79-1.03-.666-1.44-.382-2.14.273-.7.61-.93 1.03-1.37.42-.44.557-.72.835-1.2.273-.47.137-.88-.07-1.23-.204-.35-1.8-4.33-2.47-5.94-.65-1.61-1.31-1.39-1.8-1.42-.487-.03-1.05-.04-1.61-.04-.557 0-1.46.19-2.23.91-.77.72-2.94 2.87-2.94 6.99 0 4.12 3.01 8.12 3.44 8.69.433.57 5.94 9.17 14.2 6.64 8.26-2.53 6.74-9.23 6.71-9.69-.03-.45-.55-.66-1.22-1.21-.666-.55-3.84-3.63-4.06-3.82z" />
+            </svg>
+
+            <span class="text-sm md:text-base">Chat with us</span>
+        </a>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <div id="back-to-top"
+        class="fixed bottom-6 right-6 z-50 cursor-pointer w-12 h-12 bg-upsteamRed text-white rounded-full flex items-center justify-center shadow-lg animate-bounceHover">
+        <!-- Arrow -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </div>
+
     <!-- HERO / BANNER -->
     <div class="relative w-full h-[450px] bg-cover bg-center flex items-center justify-center"
-        style="background-image: url('assets/images/img8.jpg');">
+        style="background-image: url('assets/images/IMG_9750.JPG.jpeg');">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
         <div class="relative z-10 text-center text-white space-y-4">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold reveal">Contact Us</h1>
             <nav class="flex justify-center space-x-2 reveal" aria-label="breadcrumb">
-                <a href="https://dev.upstreaminnigeria.com" class="hover:text-upsteamRed transition">Home</a>
+                <a href="#" class="hover:text-upsteamRed transition">Home</a>
                 <span class="opacity-60">/</span>
                 <span class="text-upsteamRed font-semibold">Contact Us</span>
             </nav>
@@ -187,7 +212,7 @@
                     </div>
                     <h4 class="text-lg font-semibold mb-1 text-gray-800">Come Visit Us</h4>
                     <p class="text-gray-600 text-center text-base">
-                        No 1b Josephine Fingesi Street,<br>Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria
+                        No 1b Josephine Fingesi Street, Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria
                     </p>
                 </div>
 
@@ -227,13 +252,12 @@
     </section>
 
     <!-- CONTACT FORM -->
-    <section class="py-16">
+    <section class="py-10">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto reveal animate-slide-in-right">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
                     <h3 class="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
-                    <form method="POST" action="proc-contact.php" id="contactForm"
-                        class="space-y-6">
+                    <form method="POST" action="proc-contact.php" id="contactForm" class="space-y-6">
                         <input type="hidden" name="_token" value="Pjc4GVbhlqycVrCJolp78H0ed8NKRsUdV4k7Vvpt">
 
                         <input type="text" name="name" placeholder="Full Name..." required
@@ -264,6 +288,28 @@
 
     <!-- Reveal Animation -->
     <script>
+
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             const elements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {

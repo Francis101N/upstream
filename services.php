@@ -37,7 +37,7 @@
         }
     </script>
 </head>
-<!-- Tailwind Animations -->
+
 <style>
     /* Headings */
     h1,
@@ -153,7 +153,7 @@
 
     <!-- WHATSAPP CHAT BUTTON -->
     <div class="fixed bottom-6 left-6 z-50">
-        <a href="https://api.whatsapp.com/send?phone=1234567890&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
+        <a href="https://api.whatsapp.com/send?phone=02014537053&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
             target="_blank"
             class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
 
@@ -178,19 +178,19 @@
 
     <!-- SERVICES BANNER -->
     <div class="section banner-page about relative bg-cover bg-center py-32"
-        style="background-image: url('assets/images/img8.jpg');">
+        style="background-image: url('assets/images/IMG_9750.JPG.jpeg');">
         <!-- Overlay for better text visibility -->
         <div class="absolute inset-0 bg-black/50"></div>
 
         <div class="container mx-auto relative z-10 text-center text-white">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fadeInDown">Services</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fadeInDown">Focus Areas</h1>
             <nav class="inline-block text-gray-200 text-lg animate-fadeInUp" aria-label="breadcrumb">
                 <ol class="list-reset flex justify-center space-x-2">
                     <li>
                         <a href="https://dev.upstreaminnigeria.com" class="hover:text-upsteamRed transition">Home</a>
                         <span class="mx-2">/</span>
                     </li>
-                    <li class="text-upsteamRed font-semibold">Services</li>
+                    <li class="text-upsteamRed font-semibold">Focus Areas</li>
                 </ol>
             </nav>
         </div>
@@ -201,10 +201,7 @@
     ?>
 
     <br>
-    <?php
-    include("inc/info.php");
-    ?>
-
+    
     <?php
     include("inc/footer.php");
     ?>
@@ -217,6 +214,20 @@
     menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
 
 </script>
 

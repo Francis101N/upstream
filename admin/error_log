@@ -1,0 +1,2 @@
+[13-Feb-2024 00:00:05 Africa/Lagos] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in /home/garespla/public_html/admin/fns.php on line 117
+[16-Nov-2024 00:00:05 Africa/Lagos] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in /home/garespla/public_html/admin/fns.php on line 117

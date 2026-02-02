@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once('PHPMailer/PHPMailerAutoload.php');
+include('connection/connect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -9,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = trim($_POST['subject'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    // Validate
+    // Validation
     if ($name === '' || $email === '' || $subject === '' || $message === '') {
         echo "<script>
                 alert('All fields are required.');
@@ -26,6 +28,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // Escape for DB
+    $db_name    = mysqli_real_escape_string($db, $name);
+    $db_email   = mysqli_real_escape_string($db, $email);
+    $db_subject = mysqli_real_escape_string($db, $subject);
+    $db_message = mysqli_real_escape_string($db, $message);
+
+    // Insert into contacts table
+    $insert = mysqli_query(
+        $db,
+        "INSERT INTO contacts (fullnames, email, subject, message)
+         VALUES ('$db_name', '$db_email', '$db_subject', '$db_message')"
+    );
+
+    if (!$insert) {
+        echo "<script>
+                alert('Failed to save message. Please try again.');
+                window.history.back();
+              </script>";
+        exit;
+    }
+
     // Escape for email output
     $safeName    = htmlspecialchars($name);
     $safeEmail   = htmlspecialchars($email);
@@ -33,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $safeMessage = nl2br(htmlspecialchars($message));
 
     // Email to Admin
-
     $adminSubject = "New Contact Message: {$safeSubject}";
     $adminBody = "
         <h2>New Contact Form Submission</h2>
@@ -42,23 +64,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p><strong>Subject:</strong> {$safeSubject}</p>
         <p><strong>Message:</strong><br>{$safeMessage}</p>
         <hr>
-        <p>Sent from upstream website.</p>
+        <p>Sent from Upstream website.</p>
     ";
 
     // Auto-reply to User
-  
-    $userSubject = "We’ve received your message";
+    $userSubject = "We have received your message";
     $userBody = "
         <h3>Hello {$safeName},</h3>
         <p>Thank you for contacting us.</p>
-        <p>Your message has been received and we’ll get back to you shortly.</p>
+        <p>Your message has been received and our team will respond shortly.</p>
         <br>
         <p>Best regards,<br>
-        upstream</p>
+        Upstream Team</p>
     ";
 
-    // PHPMailer Setup 
-
+    // PHPMailer Setup
     $mail = new PHPMailer(true);
 
     try {
@@ -70,11 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
-        $mail->setFrom('portfolio@techbyfrancis.com', 'upstream notification');
+        $mail->setFrom('portfolio@techbyfrancis.com', 'Upstream Notification');
         $mail->isHTML(true);
 
         // Send to Admin
-        $mail->addAddress('francisnwankwo1972@gmail.com');
+        $mail->addAddress('contact@upstreaminnigeria.com');
         $mail->Subject = $adminSubject;
         $mail->Body    = $adminBody;
         $mail->send();
@@ -93,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } catch (Exception $e) {
         echo "<script>
-                alert('Message could not be sent. Mail error: {$mail->ErrorInfo}');
+                alert('Message saved but email failed. Please try again later.');
                 window.history.back();
               </script>";
     }

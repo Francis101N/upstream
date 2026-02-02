@@ -181,7 +181,7 @@
 
     <!-- WHATSAPP CHAT BUTTON -->
     <div class="fixed bottom-6 left-6 z-50">
-        <a href="https://api.whatsapp.com/send?phone=1234567890&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
+        <a href="https://api.whatsapp.com/send?phone=02014537053&text=Hello+Upstream+Development+Company%2C+I%27m+interested+in+your+services"
             target="_blank"
             class="flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
 
@@ -206,7 +206,7 @@
 
     <!-- SERVICES BANNER -->
     <div class="section banner-page about relative bg-cover bg-center py-32"
-        style="background-image: url('assets/images/img8.jpg');">
+        style="background-image: url('assets/images/IMG_9750.JPG.jpeg');">
         <!-- Overlay for better text visibility -->
         <div class="absolute inset-0 bg-black/50"></div>
 
@@ -221,7 +221,7 @@
             <nav class="reveal" aria-label="breadcrumb">
                 <ol class="flex justify-center items-center space-x-2 text-lg text-gray-200">
                     <li>
-                        <a href="https://dev.upstreaminnigeria.com"
+                        <a href="home"
                             class="hover:text-upsteamRed transition-all duration-300 hover:underline underline-offset-4">
                             Home
                         </a>
@@ -245,8 +245,7 @@
             space-y-8 lg:-ml-10">
                 <div id="caro" class="owl-carousel">
                     <div>
-                        <img src="https://dev.upstreaminnigeria.com/upload/history_images/202501241629blog-1.jpg"
-                            class="w-full h-[420px] object-cover">
+                        <img src="assets/images/img3.jpg" class="w-full h-[420px] object-cover">
                     </div>
                 </div>
             </div>
@@ -291,11 +290,7 @@
         width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     <br><br>
-
-    <?php
-    include("inc/info.php");
-    ?>
-
+    
     <?php
     include("inc/footer.php");
     ?>
@@ -303,6 +298,27 @@
 
 </body>
 <script>
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
