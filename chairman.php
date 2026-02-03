@@ -244,7 +244,7 @@
         </div>
     </div>
 
-    <section class="bg-gray-50 border-t border-gray-200 py-20 mx-20">
+    <section class="bg-gray-50 border-t border-gray-200 py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
 

@@ -10,65 +10,73 @@
         #introOverlay {
             position: fixed;
             inset: 0;
-            background: #ffffff; /* White background */
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            color: #000; /* Dark text for contrast */
+            color: #000;
         }
 
         /* Logo */
         #logo {
-            width: 150px;
+            width: 180px;
             height: auto;
             margin-bottom: 30px;
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
 
-        /* Loading bar container */
-        #loaderContainer {
-            width: 250px;
-            height: 10px;
-            background: rgba(0, 0, 0, 0.1); /* subtle gray background */
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 20px;
-            display: none; /* Hidden initially */
-        }
-
-        /* Loading bar */
-        #loaderBar {
-            width: 0%;
-            height: 100%;
-            background-color: #601000; /* Brand color */
-        }
-
-        /* Fade-in animation for logo */
         @keyframes fadeIn {
             to {
                 opacity: 1;
             }
         }
 
-        /* Loader progress animation */
+        /* Loader */
+        #loaderContainer {
+            width: 250px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #loaderBar {
+            width: 0%;
+            height: 100%;
+            background-color: #601000;
+        }
+
         @keyframes loadProgress {
             0% {
                 width: 0%;
             }
+
             100% {
                 width: 100%;
             }
         }
 
-        /* Prompt text */
+        /* Click prompt */
         #playPrompt {
             margin-top: 20px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
-            color: #601000; /* Brand color for text */
+            color: #601000;
+            padding: 12px 25px;
+            border: 2px solid #601000;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        #playPrompt:hover {
+            background-color: #601000;
+            color: #fff;
         }
     </style>
 </head>
@@ -88,7 +96,7 @@
         </div>
 
         <!-- Click prompt -->
-        <div id="playPrompt">Click to start the experience →</div>
+        <div id="playPrompt">Click to Start Experience →</div>
     </div>
 
     <script>
@@ -97,7 +105,7 @@
         const prompt = document.getElementById("playPrompt");
         const loaderContainer = document.getElementById("loaderContainer");
         const loaderBar = document.getElementById("loaderBar");
-        const homeURL = "home"; // Homepage URL
+        const homeURL = "home"; // Change to your homepage URL
 
         function startIntro() {
             // Hide the prompt
@@ -107,22 +115,24 @@
             loaderContainer.style.display = "block";
 
             // Start loader animation
-            loaderBar.style.animation = "loadProgress 5s linear forwards"; // 5 seconds now
+            loaderBar.style.animation = "loadProgress 5s linear forwards";
 
-            // Play audio
-            audio.play().catch(err => console.log("Error playing audio:", err));
+            // Play audio directly on user interaction
+            audio.play().catch(err => console.log("Audio error:", err));
 
             // Redirect after 5 seconds
             setTimeout(() => {
                 window.location.href = homeURL;
             }, 5000);
 
-            // Remove click listener
-            window.removeEventListener("click", startIntro);
+            // Remove click listeners
+            prompt.removeEventListener("click", startIntro);
+            overlay.removeEventListener("touchstart", startIntro);
         }
 
-        // Wait for first user interaction
-        window.addEventListener("click", startIntro);
+        // Listen for tap or click
+        prompt.addEventListener("click", startIntro);
+        overlay.addEventListener("touchstart", startIntro);
     </script>
 </body>
 
