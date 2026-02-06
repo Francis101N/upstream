@@ -83,7 +83,7 @@
 
 <body>
     <!-- Audio -->
-    <audio id="introAudio" src="assets/images/Back-to-Reality-[AudioTrimmer.com].mp3"></audio>
+    <audio id="introAudio" src="assets/images/new-intro.mp3"></audio>
 
     <!-- Intro overlay -->
     <div id="introOverlay">
